@@ -23,11 +23,11 @@
             <Font name="Book Antiqua" size="46.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCode" layoutX="32.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Code" />
-      <TextField fx:id="txtCrsName" layoutX="285.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Course_Name" />
-      <TextField fx:id="txtCrsType" layoutX="543.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Course_Type" />
+      <TextField fx:id="txtCode" layoutX="39.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Code" />
+      <TextField fx:id="txtCrsName" layoutX="298.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Course_Name" />
+      <TextField fx:id="txtCrsType" layoutX="553.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Course_Type" />
       <TextField fx:id="txtDuration" layoutX="808.0" layoutY="186.0" prefHeight="48.0" prefWidth="218.0" promptText="Duration" />
-      <JFXButton layoutX="216.0" layoutY="260.0" onAction="#btnSaveOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #197;" text="Save" textFill="WHITE">
+      <JFXButton layoutX="217.0" layoutY="260.0" onAction="#btnSaveOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #197;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -35,7 +35,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="444.0" layoutY="260.0" onAction="#btnUpdateOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #f1c40f;" text="Update" textFill="WHITE">
+      <JFXButton layoutX="446.0" layoutY="260.0" onAction="#btnUpdateOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #f1c40f;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton layoutX="644.0" layoutY="260.0" onAction="#btnDeleteOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #ee5253;" text="Delete" textFill="WHITE">
+      <JFXButton layoutX="699.0" layoutY="260.0" onAction="#btnDeleteOnAction" prefHeight="50.0" prefWidth="117.0" style="-fx-background-color: #ee5253;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -51,7 +51,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXTextField fx:id="txtSearch" layoutX="104.0" layoutY="113.0" onAction="#searchOnAction" prefHeight="31.0" prefWidth="342.0" unFocusColor="#ff1168" />
+      <JFXTextField fx:id="txtSearch" layoutX="100.0" layoutY="122.0" onAction="#searchOnAction" prefHeight="31.0" prefWidth="342.0" unFocusColor="#002bff" />
       <TableView fx:id="tblCourse" layoutX="100.0" layoutY="365.0" prefHeight="338.0" prefWidth="850.0">
         <columns>
           <TableColumn fx:id="colCode" prefWidth="169.0" text="Code" />
@@ -65,5 +65,10 @@
             <Image url="@../asserts/search.png" />
          </image>
       </ImageView>
+      <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="829.0" layoutY="33.0" onAction="#newOnAction" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #258;" text="+New Course" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

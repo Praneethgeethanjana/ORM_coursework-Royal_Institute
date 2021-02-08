@@ -52,4 +52,9 @@ public class CourseBOImpl implements CourseBO {
         }
         return dtoList;
     }
+
+    @Override
+    public String getCourseID() throws Exception {
+        return courseDAO.getCID();
+    }
 }

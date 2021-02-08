@@ -11,5 +11,6 @@ public interface CourseBO extends SuperBO {
     public boolean updateCourse(CourseDTO courseDTO)throws Exception;
     public CourseDTO getCourse(String id) throws Exception;
     public ArrayList<CourseDTO> getAllCourses() throws Exception;
+    public String getCourseID()throws Exception;
 
 }

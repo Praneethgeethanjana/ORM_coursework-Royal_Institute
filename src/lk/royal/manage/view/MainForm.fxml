@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="684.0" prefWidth="1063.0" stylesheets="@style/Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.royal.manage.controller.MainFormController">
+<AnchorPane prefHeight="684.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.royal.manage.controller.MainFormController">
    <children>
       <ImageView fitHeight="729.0" fitWidth="1063.0" opacity="0.8" pickOnBounds="true">
          <image>
             <Image url="@../asserts/vadim-sherbakov-d6ebY-faOO0-unsplash.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="215.0" fitWidth="296.0" layoutX="39.0" layoutY="365.0" pickOnBounds="true">
+      <ImageView fitHeight="215.0" fitWidth="296.0" layoutX="39.0" layoutY="365.0" onMouseClicked="#studentClickOnAction" pickOnBounds="true">
          <image>
             <Image url="@../asserts/students1.jpg" />
          </image>

@@ -22,4 +22,14 @@ public class MainFormController {
         stage.show();
 
     }
+
+    public void studentClickOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/lk/royal/manage/view/StudentForm.fxml");
+        Parent parent= FXMLLoader.load(resource);
+        Scene scene=new Scene(parent);
+        Stage stage=new Stage();
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }

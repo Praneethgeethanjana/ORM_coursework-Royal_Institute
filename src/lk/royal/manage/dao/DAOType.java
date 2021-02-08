@@ -1,5 +1,5 @@
 package lk.royal.manage.dao;
 
 public enum DAOType {
-    COURSE
+    COURSE,STUDENT
 }

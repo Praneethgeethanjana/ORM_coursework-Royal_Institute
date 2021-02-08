@@ -1,6 +1,7 @@
 package lk.royal.manage.dao;
 
 import lk.royal.manage.dao.custom.impl.CourseDAOImpl;
+import lk.royal.manage.dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -16,6 +17,8 @@ public class DAOFactory {
          switch (daoType){
              case COURSE:
                  return (T) new CourseDAOImpl();
+             case STUDENT:
+                 return (T) new StudentDAOImpl();
              default:
                  return null;
 
