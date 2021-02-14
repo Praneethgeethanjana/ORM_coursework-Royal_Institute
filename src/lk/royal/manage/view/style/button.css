@@ -1,0 +1,55 @@
+.save{
+    -fx-background-color: #319c86;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+}
+.save:hover{
+    -fx-background-color: #036644;
+}
+
+.update{
+    -fx-background-color: #d49540;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+
+}
+
+.update:hover{
+    -fx-background-color: #ff6700;
+}
+
+.delete{
+    -fx-background-color: #fb5050;
+    -fx-background-radius: 10px;
+    -fx-text-fill: white;
+
+}
+
+.delete:hover{
+    -fx-background-color: #dc2929;
+
+}
+
+.new{
+    -fx-background-color: #2168b6;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+}
+.new:hover{
+    -fx-background-color:#0d3e7b ;
+}
+
+.text-field{
+    -fx-background-radius: 15px;
+}
+
+
+.login{
+-fx-background-color:  #558;
+-fx-background-radius: 8px;
+-fx-text-fill: white;
+}
+
+.login:hover{
+    -fx-background-color: #3b325c;
+}

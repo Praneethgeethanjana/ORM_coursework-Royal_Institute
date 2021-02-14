@@ -9,6 +9,10 @@ public class CourseDTO {
     public CourseDTO() {
     }
 
+    public CourseDTO(String code) {
+        this.code = code;
+    }
+
     public CourseDTO(String code, String course_name, String course_type, String duration) {
         this.code = code;
         this.course_name = course_name;

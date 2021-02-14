@@ -1,6 +1,7 @@
 package lk.royal.manage;
 
 import lk.royal.manage.entity.Course;
+import lk.royal.manage.entity.Registration;
 import lk.royal.manage.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,23 +24,13 @@ public class FactoryConfiguration {
         sessionFactory = new Configuration().mergeProperties(properties)
                     .addAnnotatedClass(Course.class)
                     .addAnnotatedClass(Student.class)
+                    .addAnnotatedClass(Registration.class)
                     .buildSessionFactory();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         }
-
-
-
-
-//        Configuration configure=new Configuration().addAnnotatedClass(Course.class);
-//
-//        sessionFactory = configure.buildSessionFactory();
-
-
-
-
 
     public static FactoryConfiguration getInstance(){
         return (null==factoryConfiguration)? factoryConfiguration=new FactoryConfiguration(): factoryConfiguration;

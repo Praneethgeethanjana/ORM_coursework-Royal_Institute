@@ -1,6 +1,7 @@
 package lk.royal.manage.bo;
 
 import lk.royal.manage.bo.custom.impl.CourseBOImpl;
+import lk.royal.manage.bo.custom.impl.RegistrationBOImpl;
 import lk.royal.manage.bo.custom.impl.StudentBOImpl;
 
 public class BOFactory {
@@ -18,6 +19,8 @@ public class BOFactory {
                 return(T) new CourseBOImpl();
             case STUDENT:
                 return (T) new StudentBOImpl();
+            case REGISTRATION:
+                return (T) new RegistrationBOImpl();
             default:
                 return null;
         }

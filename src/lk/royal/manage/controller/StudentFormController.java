@@ -6,9 +6,15 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.royal.manage.bo.BOFactory;
 import lk.royal.manage.bo.BOType;
 import lk.royal.manage.bo.custom.impl.StudentBOImpl;
@@ -17,11 +23,13 @@ import lk.royal.manage.dto.StudentDTO;
 import lk.royal.manage.view.tm.CourseTM;
 import lk.royal.manage.view.tm.StudentTM;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class StudentFormController implements Initializable {
     public TextField txtSID;
@@ -38,19 +46,55 @@ public class StudentFormController implements Initializable {
     public TableColumn colContact;
     public TableColumn colDOB;
     public TableColumn colGender;
+    public ImageView icon_home;
 
     StudentBOImpl studentBO= BOFactory.getInstance().getBO(BOType.STUDENT);
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws Exception {
-        boolean isAdded=studentBO.saveStudent(new StudentDTO(txtSID.getText(),txtName.getText(),txtAddress.getText(),txtContact.getText(),dateDOB.getValue().toString(),cmbGender.getValue().toString()));
 
-        if(isAdded){
-            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText(null);
-            alert.setContentText("Student Added Success...");
-            alert.showAndWait();
+        if(Pattern.compile("^(S)[0-9]{1,}$").matcher(txtSID.getText()).matches()){
+            if (Pattern.compile("[A-z]{1,}$").matcher(txtName.getText()).matches()){
+             if (Pattern.compile("^[A-z]{1,}$").matcher(txtAddress.getText()).matches()){
+                 if (Pattern.compile("^[0-9]{10}$").matcher(txtContact.getText()).matches()){
+//                     if (Pattern.compile("^[0-9]{1,12}/[0-9]{1,31}/[0-9]{4}$").matcher(dateDOB.getValue().toString()).matches()){
+
+                         boolean isAdded=studentBO.saveStudent(new StudentDTO(txtSID.getText(),txtName.getText(),txtAddress.getText(),txtContact.getText(),dateDOB.getValue().toString(),cmbGender.getValue().toString()));
+
+                         if(isAdded){
+                             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+                             alert.setHeaderText(null);
+                             alert.setContentText("Student Added Success...");
+                             alert.showAndWait();
+                         }
+                         loadAllStudents();
+
+//                     }else {
+//                         dateDOB.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+//                         dateDOB.requestFocus();
+//                     }
+
+
+                 }else {
+                     txtContact.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+                     txtContact.requestFocus();
+                 }
+
+             }else {
+                 txtAddress.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+                 txtAddress.requestFocus();
+             }
+
+            }else {
+                txtName.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+                txtName.requestFocus();
+            }
+
+        }else {
+            txtSID.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+            txtSID.requestFocus();
         }
-        loadAllStudents();
+
+
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws Exception {
@@ -148,6 +192,31 @@ public class StudentFormController implements Initializable {
     }
 
     public void newOnAction(ActionEvent actionEvent) {
+        txtSID.clear();
+        txtName.clear();
+        txtAddress.clear();
+        txtContact.clear();
+        dateDOB.setValue(null);
+        cmbGender.getSelectionModel().clearSelection();
 
+
+        String s=null;
+        try {
+            s=studentBO.getStudentID();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         txtSID.setText(s);
+    }
+
+    public void homeOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/lk/royal/manage/view/MainForm.fxml");
+        Parent parent= FXMLLoader.load(resource);
+        Scene scene=new Scene(parent);
+        Stage stage=new Stage();
+        stage.setScene(scene);
+        stage.show();
+        Stage close= (Stage) icon_home.getScene().getWindow();
+        close.close();
     }
 }

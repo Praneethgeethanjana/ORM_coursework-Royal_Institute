@@ -55,6 +55,18 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public String getCourseID() throws Exception {
-        return courseDAO.getCID();
+        String lastID = courseDAO.getCID();
+        if (lastID == null) {
+            return "C001";
+        }
+        int newID = Integer.parseInt(lastID.substring(1, 4)) + 1;
+
+        if (newID < 10) {
+            return "C00" + newID;
+        } else if (newID < 100) {
+            return "C0" + newID;
+        } else {
+            return "C" + newID;
+        }
     }
 }

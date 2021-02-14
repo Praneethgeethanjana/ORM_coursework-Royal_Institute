@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="729.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.royal.manage.controller.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="729.0" fitWidth="1063.0" opacity="0.74" pickOnBounds="true">
+         <image>
+            <Image url="@../asserts/regis.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtregNO" layoutX="57.0" layoutY="212.0" prefHeight="38.0" prefWidth="362.0" promptText="regNO" style="-fx-background-color: white;" />
+      <JFXDatePicker fx:id="dateReg" layoutX="57.0" layoutY="455.0" prefHeight="31.0" prefWidth="362.0" promptText="Registation_Date" style="-fx-background-color: white;" />
+      <JFXTextField fx:id="txtFee" layoutX="57.0" layoutY="539.0" prefHeight="31.0" prefWidth="362.0" promptText="Course_Fee" style="-fx-background-color: white;" />
+      <ComboBox fx:id="cmbSID" layoutX="57.0" layoutY="290.0" onAction="#getSIDOnAction" prefHeight="38.0" prefWidth="163.0" promptText="Select StudentID" />
+      <ComboBox fx:id="cmbCID" layoutX="57.0" layoutY="373.0" onAction="#getCIDOnAction" prefHeight="38.0" prefWidth="163.0" promptText="Select Course" />
+      <Label alignment="CENTER" layoutX="363.0" prefHeight="54.0" prefWidth="362.0" text="Registration" textFill="#eaeef8">
+         <font>
+            <Font name="Gill Sans MT Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="68.0" layoutY="628.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="44.0" prefWidth="103.0" styleClass="save" stylesheets="@style/button.css" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <Button layoutX="220.0" layoutY="628.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="44.0" prefWidth="103.0" styleClass="update" stylesheets="@style/button.css" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Button>
+      <JFXTextField fx:id="txtSearchReg" alignment="CENTER" layoutX="109.0" layoutY="122.0" onAction="#searchOnAction" prefHeight="31.0" prefWidth="242.0" unFocusColor="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></JFXTextField>
+      <ImageView fitHeight="54.0" fitWidth="59.0" layoutX="56.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/search.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtSname" alignment="CENTER" layoutX="230.0" layoutY="290.0" prefHeight="38.0" prefWidth="187.0" style="-fx-background-color: white;" />
+      <JFXTextField fx:id="txtCname" alignment="CENTER" layoutX="230.0" layoutY="373.0" prefHeight="38.0" prefWidth="187.0" style="-fx-background-color: white;" />
+      <JFXButton layoutX="783.0" layoutY="54.0" onAction="#newOnAction" prefHeight="54.0" prefWidth="169.0" styleClass="new" stylesheets="@style/button.css" text="+New Registration" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="icon_home" fitHeight="74.0" fitWidth="84.0" layoutX="9.0" onMouseClicked="#homeOnAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/home.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

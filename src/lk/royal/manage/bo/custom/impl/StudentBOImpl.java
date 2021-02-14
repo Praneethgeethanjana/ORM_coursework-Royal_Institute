@@ -53,4 +53,21 @@ public class StudentBOImpl implements StudentBO {
         }
         return dtoList;
     }
+
+    @Override
+    public String getStudentID() throws Exception {
+        String lastID = studentDAO.getSID();
+        if (lastID == null) {
+            return "S001";
+        }
+        int newID = Integer.parseInt(lastID.substring(1, 4)) + 1;
+
+        if (newID < 10) {
+            return "S00" + newID;
+        } else if (newID < 100) {
+            return "S0" + newID;
+        } else {
+            return "S" + newID;
+        }
+    }
 }

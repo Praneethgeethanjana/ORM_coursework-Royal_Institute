@@ -13,6 +13,10 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
+    public StudentDTO(String id) {
+        this.id = id;
+    }
+
     public StudentDTO(String id, String student_name, String address, String contact, String dob, String gender) {
         this.id = id;
         this.student_name = student_name;

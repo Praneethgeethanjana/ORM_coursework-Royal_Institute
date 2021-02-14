@@ -1,8 +1,8 @@
 package lk.royal.manage.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Student implements SuperEntity {
@@ -13,8 +13,15 @@ public class Student implements SuperEntity {
       private String contact;
       private String  dob;
       private String gender;
+      @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+      private List<Registration> registrations;
+
 
     public Student() {
+    }
+
+    public Student(String id) {
+        this.id = id;
     }
 
     public Student(String id, String student_name, String address, String contact, String dob, String gender) {
@@ -24,6 +31,10 @@ public class Student implements SuperEntity {
         this.contact = contact;
         this.dob = dob;
         this.gender = gender;
+    }
+
+    public Student(List<Registration> registrations) {
+        this.registrations = registrations;
     }
 
     public String getId() {
@@ -74,6 +85,14 @@ public class Student implements SuperEntity {
         this.gender = gender;
     }
 
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -83,6 +102,7 @@ public class Student implements SuperEntity {
                 ", contact='" + contact + '\'' +
                 ", dob='" + dob + '\'' +
                 ", gender='" + gender + '\'' +
+                ", registrations=" + registrations +
                 '}';
     }
 }

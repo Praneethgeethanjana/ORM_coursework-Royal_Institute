@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="729.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.royal.manage.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="729.0" fitWidth="1063.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../asserts/login.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtUser" layoutX="352.0" layoutY="235.0" prefHeight="40.0" prefWidth="360.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+      <JFXButton layoutX="471.0" layoutY="444.0" onAction="#loginOnAction" prefHeight="51.0" prefWidth="135.0" styleClass="login" stylesheets="@style/button.css" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <ImageView fx:id="icnVisible" fitHeight="51.0" fitWidth="45.0" layoutX="712.0" layoutY="342.0" onMouseClicked="#eyeOpen" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/visible.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="icnUnvisible" fitHeight="51.0" fitWidth="45.0" layoutX="712.0" layoutY="341.0" onMouseClicked="#eyeClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/Unvisible.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <PasswordField fx:id="password" layoutX="352.0" layoutY="342.0" prefHeight="45.0" prefWidth="360.0" />
+      <TextField fx:id="txtpw" layoutX="352.0" layoutY="341.0" prefHeight="45.0" prefWidth="360.0" />
+      <Label alignment="CENTER" layoutX="306.0" layoutY="7.0" prefHeight="74.0" prefWidth="453.0" text="Royal Institute">
+         <font>
+            <Font name="Harrington" size="60.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

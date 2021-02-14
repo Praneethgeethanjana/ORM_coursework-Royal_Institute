@@ -5,6 +5,7 @@ import lk.royal.manage.dao.custom.CourseDAO;
 import lk.royal.manage.entity.Course;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -45,7 +46,9 @@ public class CourseDAOImpl implements CourseDAO {
         transaction.commit();
         session.close();
         return true;
+
     }
+
 
     @Override
     public Course get(String s) throws Exception {
@@ -59,15 +62,16 @@ public class CourseDAOImpl implements CourseDAO {
 
     }
 
+
     @Override
     public List<Course> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        List<Course>list=session.createCriteria(Course.class).list();
+        List<Course> list = session.createCriteria(Course.class).list();
         transaction.commit();
         session.close();
         return list;
-
+    }
 //        Query query=session.createQuery("FROM Course");
 //        List list=query.list();
 //        transaction.commit();
@@ -75,33 +79,17 @@ public class CourseDAOImpl implements CourseDAO {
 
 
 
-    }
+
 
     @Override
     public String getCID() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Query query = session.createNativeQuery("SELECT code FROM course ORDER BY code DESC LIMIT 1");
-
-
-        String s = (String) query.uniqueResult();
-//        String nextID = "";
-//        if (null == s) {
-//            nextID = "C0001";
-//        } else {
-            int maxID = Integer.parseInt(s.replace("C", ""));
-            maxID = maxID + 1;
-            String cid = "";
-            if (maxID < 10) {
-                cid = "C00" + maxID;
-            } else if (maxID < 100) {
-                cid = "C0" + maxID;
-            } else {
-                cid = "C" + maxID;
-            }
-            session.close();
-            return cid;
-
-        }
+        Transaction transaction = session.beginTransaction();
+        NativeQuery query = session.createSQLQuery("SELECT code FROM course ORDER BY code DESC LIMIT 1");
+        String rst = (String) query.uniqueResult();
+        transaction.commit();
+        return rst;
+    }
 
 
 }

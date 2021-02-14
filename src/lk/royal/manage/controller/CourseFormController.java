@@ -4,19 +4,27 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lk.royal.manage.bo.BOFactory;
 import lk.royal.manage.bo.BOType;
 import lk.royal.manage.bo.custom.impl.CourseBOImpl;
 import lk.royal.manage.dto.CourseDTO;
 import lk.royal.manage.view.tm.CourseTM;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CourseFormController implements Initializable {
     public TextField txtCode;
@@ -29,24 +37,51 @@ public class CourseFormController implements Initializable {
     public TableColumn colCrsType;
     public TableColumn colDuration;
     public JFXTextField txtSearch;
+    public ImageView icon_home;
 
     CourseBOImpl courseBO= BOFactory.getInstance().getBO(BOType.COURSE);
 
     public void btnSaveOnAction(ActionEvent actionEvent) throws Exception {
-        boolean b = courseBO.saveCourse(new CourseDTO(txtCode.getText(), txtCrsName.getText(), txtCrsType.getText(), txtDuration.getText()));
 
-        if(b){
-            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText(null);
-            alert.setContentText("Course Added Success...");
-            alert.showAndWait();
+        if(Pattern.compile("^(C)[0-9]{1,}$").matcher(txtCode.getText()).matches()){
+            if (Pattern.compile("[A-z]{1,}$").matcher(txtCrsName.getText()).matches()) {
+                if (Pattern.compile("^[1-9]{1,2}[A-z]{1,}$").matcher(txtDuration.getText()).matches()) {
+
+
+                    boolean b = courseBO.saveCourse(new CourseDTO(txtCode.getText(), txtCrsName.getText(), txtCrsType.getText(), txtDuration.getText()));
+
+                    if (b) {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Course Added Success...");
+                        alert.showAndWait();
+
+                    }
+                    txtCode.setText("");
+                    txtCrsName.setText("");
+                    txtCrsType.setText("");
+                    txtDuration.setText("");
+
+                    loadAllCourses();
+
+
+                } else {
+                    txtDuration.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+                    txtDuration.requestFocus();
+                }
+            }else {
+                    txtCrsName.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+                    txtCrsName.requestFocus();
+                }
+
+            }else {
+            txtCode.setStyle("-fx-border-color:red;-fx-border-width:2px;");
+            txtCode.requestFocus();
+
         }
-        txtCode.setText("");
-        txtCrsName.setText("");
-        txtCrsType.setText("");
-        txtDuration.setText("");
 
-        loadAllCourses();
+
+
 
     }
 
@@ -140,15 +175,30 @@ public class CourseFormController implements Initializable {
         tblCourse.setItems(tmList);
     }
 
-    public void newOnAction(ActionEvent actionEvent) throws Exception {
+    public void newOnAction(ActionEvent actionEvent) {
         txtCode.clear();
         txtCrsName.clear();
         txtCrsType.clear();
         txtDuration.clear();
 
-        txtCode.setText(courseBO.getCourseID());
+        String id= null;
+        try {
+            id = courseBO.getCourseID();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        txtCode.setText(id);
 
-//            String code=courseBO.getCourseID();
-//            txtCode.setText(code);
+    }
+
+    public void homeOnAction(MouseEvent mouseEvent) throws IOException {
+        URL resource = this.getClass().getResource("/lk/royal/manage/view/MainForm.fxml");
+        Parent parent= FXMLLoader.load(resource);
+        Scene scene=new Scene(parent);
+        Stage stage=new Stage();
+        stage.setScene(scene);
+        stage.show();
+        Stage close= (Stage) icon_home.getScene().getWindow();
+        close.close();
     }
 }

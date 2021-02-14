@@ -1,6 +1,7 @@
 package lk.royal.manage.dao;
 
 import lk.royal.manage.dao.custom.impl.CourseDAOImpl;
+import lk.royal.manage.dao.custom.impl.RegistrationDAOImpl;
 import lk.royal.manage.dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
@@ -19,6 +20,8 @@ public class DAOFactory {
                  return (T) new CourseDAOImpl();
              case STUDENT:
                  return (T) new StudentDAOImpl();
+             case REGISTRATION:
+                 return (T) new RegistrationDAOImpl();
              default:
                  return null;
 

@@ -5,6 +5,7 @@ import lk.royal.manage.dao.custom.StudentDAO;
 import lk.royal.manage.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 
 import java.util.List;
 
@@ -61,5 +62,15 @@ public class StudentDAOImpl implements StudentDAO {
         transaction.commit();
         session.close();
         return list;
+    }
+
+    @Override
+    public String getSID() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery query=session.createSQLQuery("SELECT id FROM student ORDER BY id DESC LIMIT 1");
+        String rst= (String) query.uniqueResult();
+        transaction.commit();
+        return rst;
     }
 }
